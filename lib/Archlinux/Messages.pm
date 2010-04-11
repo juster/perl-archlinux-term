@@ -176,7 +176,7 @@ isn't caught it is displayed on the screen and the program exits.
 
 =head1 AUTHOR
 
-Justin Davis C<< < juster at cpan dot org > >>
+Justin Davis C<< <juster at cpan dot org> >>
 
 =head1 LICENSE
 
