@@ -6,8 +6,10 @@ lib/Archlinux/Messages.pm
 t/00-load.t
 t/01-colors.t
 t/02-wrap.t
+t/03-noimport.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+examples/test.pl
 Makefile.PL
 META.yml

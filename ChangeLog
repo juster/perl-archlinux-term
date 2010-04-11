@@ -1,5 +1,7 @@
 2010-04-11  Justin Davis  <juster@cpan.org>
 
+	* t/03-noimport.t: Created new test.
+
 	* MANIFEST: Forgot to add new tests to MANIFEST.  Added
 	01-colors.t and 02-wrap.t.
 
