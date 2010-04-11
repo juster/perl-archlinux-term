@@ -1,0 +1,110 @@
+NAME
+    Archlinux::Messages - Display messages on the terminal Archlinux style!
+
+VERSION
+    0.01
+
+SYNOPSIS
+      use Archlinux::Messages;
+
+      status( 'This is a status message' );
+      substatus( 'This is a substatus message' );
+      warning( 'This is a warning message' );
+      error( 'This is a fatal error message' ); # Also exits the program
+      msg( 'This is just an indented message' );
+
+    Outputs:
+
+      ==> This is a status message
+        -> This is a substatus message
+      ==> WARNING: This is a warning message
+      ==> ERROR: This is a fatal error message
+          This is just an indented message
+
+DESCRIPTION
+    Archlinux has a distinctive and simple style for displaying messages on
+    the terminal. This style is used in the init scripts and Archlinux
+    programs like pacpan to give a cohesive look to Archlinux's terminal.
+    Now you can easily conform to this simple colorful style and fit right
+    in!
+
+FUNCTIONS
+    All functions are exported by default. This is a little sloppy, but its
+    easier when you're writing a quick script! If you don't want to pollute
+    the namespace then just explicitly import nothing into your namespace:
+
+      use Archlinux::Messages qw();
+
+    Every function takes multiple arguments which are `join'ed together,
+    word-wrapped and printed to the screen. If a message goes past the
+    screen limit it is wordwrapped and indented past the prefix.
+
+  msg( text1 [ , text2, ... ] )
+    Prints a simple message. There is no coloring it is merely wordwrapped
+    and indented by four spaces.
+
+  status( text1 [ , text2, ... ] )
+    Prints a status message. These are basically like major headings in a
+    document. The message is prefixed with a green arrow:
+
+  substatus( text1 [ , text2, ... ] )
+    Prints a sub-status message. These are like minor headings in a
+    document. The message is prefixed with a little blue arrow.
+
+  warning( text1 [ , text2, ... ] )
+    Prints a warning message. These are non-fatal warning messages; the
+    program will keep running. The message is prefixed with a yellow arrow
+    and capital WARNING.
+
+  error( text1 [ , text2, ... ] )
+    Prints a fatal error message AND DIES, EXITING. There is no line number
+    appended to the `die' message. `$@' or `$EVAL_ERROR' is the colorized
+    output. The message is prefixed with a red arrow and capital ERROR.
+
+    The error can be caught with an enclosing `eval' block. If the error
+    isn't caught it is displayed on the screen and the program exits.
+
+    Example
+      eval {
+          if ( $stuff eq 'bad' ) {
+              error( q{Stuff went bad!} )
+          }
+      };
+
+      if ( $@ =~ /Stuff went bad!/ ) {
+          warning( q{Stuff went bad, but it's okay now!} );
+      }
+
+TWEAKING
+    You can change the default settings of Archlinux::Messages by changing
+    some package variables:
+
+  Word-wrap columns
+    `$Archlinux::Messages::Columns' Determines at which column word-wrapping
+    occurs.
+
+  Monochrome
+    If `$Archlinux::Messages::Mono' is set to a true value then ANSI
+    terminal colors are disabled.
+
+  Example
+      use Archlinux::Messages;
+
+      sub mysub
+      {
+          # It's usually a good idea to use local for this stuff...
+          local $Archlinux::Messages::Columns = 144;
+          local $Archlinux::Messages::Mono    = 1;
+
+          status( "Here is an uncolorful really long status message ... " );
+      }
+
+AUTHOR
+    Justin Davis `<juster at cpan dot org>'
+
+LICENSE
+    Copyright 2010 Justin Davis, all rights reserved.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
