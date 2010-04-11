@@ -5,10 +5,11 @@ use strict;
 
 use Term::ANSIColor qw(color);
 use Text::Wrap      qw(wrap);
+use Exporter;
 
-our @ISA        = qw(Exporter);
-our @EXPORT_ALL = qw(msg status substatus warning error);
-our $VERSION    = '0.01';
+our @ISA     = qw(Exporter);
+our @EXPORT  = qw(msg status substatus warning error);
+our $VERSION = '0.01';
 
 our ($Columns, $Mono) = (78, undef);
 
@@ -21,7 +22,7 @@ sub _color_wrap
     my $msg          = join q{}, @messages;
     $msg             =~ s/\s*\n\s*/ /g;
 
-    $Text::Wrap::columns = $Columns;
+    local $Text::Wrap::columns = $Columns;
     my $result       = wrap( $prefix, q{ } x length( $prefix ), $msg );
     my $prefix_match = quotemeta $prefix;
 
@@ -29,7 +30,7 @@ sub _color_wrap
 
     # Now colorize the prefix and stuff...
     $result =~ s{ \A $prefix_match } # Use \033[0;1m cuz Term::ANSIColor
-                { color( "BOLD $color" ) . $prefix . "\033[0;1m" }exms;
+                { color( 'BOLD', $color ) . $prefix . "\e[0;1m" }exms;
     $result .= color( 'RESET' );     # ... doesnt have very bright white!
 
     return $result;
@@ -149,15 +150,16 @@ document.  The message is prefixed with a little blue arrow.
 =head2 warning( text1 [ , text2, ... ] )
 
 Prints a warning message.  These are non-fatal warning messages; the
-program will keep running.  The message is prefixed with a yellow
-arrow and capital WARNING.
+program will keep running.  Warnings are printed to STDERR by using
+C<warn>.  The message is prefixed with a yellow arrow and capital
+WARNING.
 
 =head2 error( text1 [ , text2, ... ] )
 
 Prints a fatal error message B<AND DIES, EXITING>.  There is no line
 number appended to the C<die> message. C<$@> or C<$EVAL_ERROR> is the
-colorized output.  The message is prefixed with a red arrow and
-capital ERROR.
+colorized output.  Errors are printed to STDERR by using C<die>.  The
+message is prefixed with a red arrow and capital ERROR.
 
 The error can be caught with an enclosing C<eval> block.  If the error
 isn't caught it is displayed on the screen and the program exits.
@@ -199,7 +201,10 @@ terminal colors are disabled.
       local $Archlinux::Messages::Columns = 144;
       local $Archlinux::Messages::Mono    = 1;
 
-      status( "Here is an uncolorful really long status message ... " );
+      status( 'Here is an uncolorful really long status message ... '  .
+              'no it's not over with yet!  We wrap at 144 characters ' .
+              'so I have to keep typing.' );
+ 
   }
 
 =head1 AUTHOR
