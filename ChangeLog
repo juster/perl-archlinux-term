@@ -1,5 +1,8 @@
 2010-04-11  Justin Davis  <juster@cpan.org>
 
+	* MANIFEST: Forgot to add new tests to MANIFEST.  Added
+	01-colors.t and 02-wrap.t.
+
 	* lib/Archlinux/Messages.pm: Added links to Archlinux and git
 	repository.
 

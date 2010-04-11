@@ -4,6 +4,8 @@ MANIFEST
 README
 lib/Archlinux/Messages.pm
 t/00-load.t
+t/01-colors.t
+t/02-wrap.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
