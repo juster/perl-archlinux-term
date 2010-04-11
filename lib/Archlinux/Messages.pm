@@ -116,7 +116,7 @@ Outputs:
 =for html
  <div style="width: 500px; background:black; font-family:monospace;
              color:white; white-space:pre; border: solid white 1px;
-             margin: 15px; "
+             margin: 15px; padding: 10px;"
  > EXAMPLE:
  <span style="color:green">==></span> This is a status message
  <span style="color:blue">  -></span> This is a substatus message
