@@ -13,6 +13,20 @@ our $VERSION = '0.01';
 
 our ($Columns, $Mono) = (78, undef);
 
+sub _word_wrap
+{
+    my ($prefix, $msg) = @_;
+
+    if ( eval { $Columns > 0 } ) {
+        my $spaces = q{ } x length $prefix;
+
+        local $Text::Wrap::columns = $Columns + 1;
+        return wrap( $prefix, $spaces, $msg );
+    }
+
+    return $prefix . $msg;
+}
+
 sub _color_wrap
 {
     my ($color, $prefix, @messages) = @_;
@@ -22,8 +36,7 @@ sub _color_wrap
     my $msg          = join q{}, @messages;
     $msg             =~ s/\s*\n\s*/ /g;
 
-    local $Text::Wrap::columns = $Columns;
-    my $result       = wrap( $prefix, q{ } x length( $prefix ), $msg );
+    my $result       = _word_wrap( $prefix, $msg );
     my $prefix_match = quotemeta $prefix;
 
     return $result if ( $Mono );
@@ -38,11 +51,12 @@ sub _color_wrap
 
 sub msg
 {
-    my $prefix   = q{ } x 4;
     my @messages = @_;
     chomp $messages[-1];
 
-    print wrap( $prefix, $prefix, join q{}, @messages ), "\n";
+    my $prefix = q{ } x 4;
+
+    print _word_wrap( $prefix, join q{}, @messages ), "\n";
 }
 
 sub status
@@ -184,7 +198,8 @@ some package variables:
 =head2 Word-wrap columns
 
 C<$Archlinux::Messages::Columns> Determines at which column
-word-wrapping occurs.
+word-wrapping occurs.  However, if it is set to a false or negative
+value, it will turn off word-wrapping all-together.
 
 =head2 Monochrome
 
