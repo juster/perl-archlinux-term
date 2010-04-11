@@ -13,6 +13,11 @@ my $builder = Module::Build->new
 
       requires            => { map { ( $_ => 0 ) } 
                                qw/ Term::ANSIColor Text::Wrap / },
+
+      meta_add => { resources =>
+                    { repository =>
+                      'http://github.com/juster/perl-archlinux-messages' }},
+
      );
 
 $builder->create_build_script();

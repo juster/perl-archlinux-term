@@ -222,6 +222,20 @@ terminal colors are disabled.
  
   }
 
+=head1 SEE ALSO
+
+=over
+
+=item * Archlinux
+
+L<http://www.archlinux.org>
+
+=item * Git Repository
+
+L<http://github.com/juster/perl-archlinux-messages>
+
+=back
+
 =head1 AUTHOR
 
 Justin Davis C<< <juster at cpan dot org> >>

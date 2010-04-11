@@ -1,3 +1,10 @@
+2010-04-11  Justin Davis  <juster@cpan.org>
+
+	* lib/Archlinux/Messages.pm: Added links to Archlinux and git
+	repository.
+
+	* Build.PL: Added link to repository.
+
 2010-04-10  Justin Davis  <juster@cpan.org>
 
 	* CPAN Release 0.01
