@@ -174,6 +174,34 @@ isn't caught it is displayed on the screen and the program exits.
       warning( q{Stuff went bad, but it's okay now!} );
   }
 
+=head1 TWEAKING
+
+You can change the default settings of Archlinux::Messages by changing
+some package variables:
+
+=head2 Word-wrap columns
+
+C<$Archlinux::Messages::Columns> Determines at which column
+word-wrapping occurs.
+
+=head2 Monochrome
+
+If C<$Archlinux::Messages::Mono> is set to a true value then ANSI
+terminal colors are disabled.
+
+=head2 Example
+
+  use Archlinux::Messages;
+
+  sub mysub
+  {
+      # It's usually a good idea to use local for this stuff...
+      local $Archlinux::Messages::Columns = 144;
+      local $Archlinux::Messages::Mono    = 1;
+
+      status( "Here is an uncolorful really long status message ... " );
+  }
+
 =head1 AUTHOR
 
 Justin Davis C<< <juster at cpan dot org> >>
