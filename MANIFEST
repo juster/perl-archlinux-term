@@ -13,3 +13,6 @@ t/pod.t
 examples/test.pl
 Makefile.PL
 META.yml
+.gitignore
+.shipit
+MANIFEST.SKIP

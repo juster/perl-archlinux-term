@@ -53,13 +53,14 @@ FUNCTIONS
 
   warning( text1 [ , text2, ... ] )
     Prints a warning message. These are non-fatal warning messages; the
-    program will keep running. The message is prefixed with a yellow arrow
-    and capital WARNING.
+    program will keep running. Warnings are printed to STDERR by using
+    `warn'. The message is prefixed with a yellow arrow and capital WARNING.
 
   error( text1 [ , text2, ... ] )
     Prints a fatal error message AND DIES, EXITING. There is no line number
     appended to the `die' message. `$@' or `$EVAL_ERROR' is the colorized
-    output. The message is prefixed with a red arrow and capital ERROR.
+    output. Errors are printed to STDERR by using `die'. The message is
+    prefixed with a red arrow and capital ERROR.
 
     The error can be caught with an enclosing `eval' block. If the error
     isn't caught it is displayed on the screen and the program exits.
@@ -81,7 +82,8 @@ TWEAKING
 
   Word-wrap columns
     `$Archlinux::Messages::Columns' Determines at which column word-wrapping
-    occurs.
+    occurs. However, if it is set to a false or negative value, it will turn
+    off word-wrapping all-together.
 
   Monochrome
     If `$Archlinux::Messages::Mono' is set to a true value then ANSI
@@ -96,8 +98,18 @@ TWEAKING
           local $Archlinux::Messages::Columns = 144;
           local $Archlinux::Messages::Mono    = 1;
 
-          status( "Here is an uncolorful really long status message ... " );
+          status( 'Here is an uncolorful really long status message ... '  .
+                  'no it's not over with yet!  We wrap at 144 characters ' .
+                  'so I have to keep typing.' );
+ 
       }
+
+SEE ALSO
+    * Archlinux
+        http://www.archlinux.org
+
+    * Git Repository
+        http://github.com/juster/perl-archlinux-messages
 
 AUTHOR
     Justin Davis `<juster at cpan dot org>'

@@ -9,7 +9,7 @@ use Exporter;
 
 our @ISA     = qw(Exporter);
 our @EXPORT  = qw(msg status substatus warning error);
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our ($Columns, $Mono) = (78, undef);
 

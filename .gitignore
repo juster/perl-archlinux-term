@@ -16,3 +16,4 @@ pod2htm*.tmp
 *.tar.gz
 *.tmp
 \tt#*#
+*.bak
