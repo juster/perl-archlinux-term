@@ -1,15 +1,5 @@
-2010-04-11  Justin Davis  <juster@cpan.org>
+2011-01-16  Justin Davis  <juster@cpan.org>
 
-	* t/03-noimport.t: Created new test.
+	* RELEASE (0.01) - I renamed this module from Archlinux::Messages
+	to Archlinux::Term and started the version back to 0.01.
 
-	* MANIFEST: Forgot to add new tests to MANIFEST.  Added
-	01-colors.t and 02-wrap.t.
-
-	* lib/Archlinux/Messages.pm: Added links to Archlinux and git
-	repository.
-
-	* Build.PL: Added link to repository.
-
-2010-04-10  Justin Davis  <juster@cpan.org>
-
-	* CPAN Release 0.01
