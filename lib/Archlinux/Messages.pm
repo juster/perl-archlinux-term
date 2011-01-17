@@ -89,11 +89,7 @@ __END__
 
 =head1 NAME
 
-Archlinux::Messages - Display messages on the terminal Archlinux style!
-
-=head1 VERSION
-
-0.01
+Archlinux::Messages - Print messages to the terminal Archlinux style!
 
 =head1 SYNOPSIS
 
@@ -127,9 +123,9 @@ Outputs:
 
 =head1 DESCRIPTION
 
-Archlinux has a distinctive and simple style for displaying messages
+Archlinux has a distinctive and simple style for displaying information
 on the terminal.  This style is used in the init scripts and Archlinux
-programs like pacpan to give a cohesive look to Archlinux's terminal.
+programs like pacman to give a cohesive look to Archlinux's terminal.
 Now you can easily conform to this simple colorful style and fit right
 in!
 
@@ -182,7 +178,7 @@ isn't caught it is displayed on the screen and the program exits.
 
   eval {
       if ( $stuff eq 'bad' ) {
-          error( q{Stuff went bad!} )
+          error( q{Stuff went bad!} );
       }
   };
 
@@ -192,7 +188,7 @@ isn't caught it is displayed on the screen and the program exits.
 
 =head1 TWEAKING
 
-You can change the default settings of Archlinux::Messages by changing
+You can change the default settings of I<Archlinux::Messages> by changing
 some package variables:
 
 =head2 Word-wrap columns
