@@ -3,8 +3,8 @@
 use Test::More tests => 1;
 
 BEGIN {
-    use_ok( 'Archlinux::Messages' ) || print "Bail out!
+    use_ok( 'Archlinux::Term' ) || print "Bail out!
 ";
 }
 
-diag( "Testing Archlinux::Messages $Archlinux::Messages::VERSION, Perl $], $^X" );
+diag( "Testing Archlinux::Term $Archlinux::Term::VERSION, Perl $], $^X" );

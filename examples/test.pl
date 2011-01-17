@@ -3,7 +3,7 @@
 use warnings;
 use strict;
 
-use Archlinux::Messages;
+use Archlinux::Term;
 
 status 'Starting to test messages';
 substatus 'Engaging our test any day now...';

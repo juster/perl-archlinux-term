@@ -1,11 +1,11 @@
 NAME
-    Archlinux::Messages - Display messages on the terminal Archlinux style!
+    Archlinux::Term - Display messages on the terminal Archlinux style!
 
 VERSION
     0.01
 
 SYNOPSIS
-      use Archlinux::Messages;
+      use Archlinux::Term;
 
       status( 'This is a status message' );
       substatus( 'This is a substatus message' );
@@ -33,7 +33,7 @@ FUNCTIONS
     easier when you're writing a quick script! If you don't want to pollute
     the namespace then just explicitly import nothing into your namespace:
 
-      use Archlinux::Messages qw();
+      use Archlinux::Term qw();
 
     Every function takes multiple arguments which are `join'ed together,
     word-wrapped and printed to the screen. If a message goes past the
@@ -77,26 +77,26 @@ FUNCTIONS
       }
 
 TWEAKING
-    You can change the default settings of Archlinux::Messages by changing
+    You can change the default settings of Archlinux::Term by changing
     some package variables:
 
   Word-wrap columns
-    `$Archlinux::Messages::Columns' Determines at which column word-wrapping
+    `$Archlinux::Term::Columns' Determines at which column word-wrapping
     occurs. However, if it is set to a false or negative value, it will turn
     off word-wrapping all-together.
 
   Monochrome
-    If `$Archlinux::Messages::Mono' is set to a true value then ANSI
+    If `$Archlinux::Term::Mono' is set to a true value then ANSI
     terminal colors are disabled.
 
   Example
-      use Archlinux::Messages;
+      use Archlinux::Term;
 
       sub mysub
       {
           # It's usually a good idea to use local for this stuff...
-          local $Archlinux::Messages::Columns = 144;
-          local $Archlinux::Messages::Mono    = 1;
+          local $Archlinux::Term::Columns = 144;
+          local $Archlinux::Term::Mono    = 1;
 
           status( 'Here is an uncolorful really long status message ... '  .
                   'no it's not over with yet!  We wrap at 144 characters ' .

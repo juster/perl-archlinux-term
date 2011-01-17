@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Test::More tests => 4;
 
-use Archlinux::Messages;
+use Archlinux::Term;
 
 my $TEN = q{1234567890};
 
@@ -25,26 +25,26 @@ sub output_of(&)
     return $out_buffer;
 }
 
-local $Archlinux::Messages::Mono = 1;
+local $Archlinux::Term::Mono = 1;
 
 unlike( output_of { status( 'this should have no color' ) },
         qr/ \e [[] .*? m /xms,
-        '$Archlinux::Messages::Mono should turn off colors' );
+        '$Archlinux::Term::Mono should turn off colors' );
 
 is output_of { status( ( $TEN x 7 ) . " $TEN" ) },
     '==> ' . ( $TEN x 7 ) . "\n    $TEN\n";
 
 {
-    $Archlinux::Messages::Columns = 9;
+    $Archlinux::Term::Columns = 9;
 
     is( output_of { status( "$TEN $TEN" ) },
         "==> 12345\n    67890\n    12345\n    67890\n",
-        '$Archlinux::Messages::Columns can customize word wrapping' );
+        '$Archlinux::Term::Columns can customize word wrapping' );
 }
 
 {
-    $Archlinux::Messages::Columns = 0;
+    $Archlinux::Term::Columns = 0;
 
     is( output_of { msg( $TEN x 10 ) }, '    ' . $TEN x 10 . "\n",
-        '$Archlinux::Messages::Columns can disable word wrapping' );
+        '$Archlinux::Term::Columns can disable word wrapping' );
 }

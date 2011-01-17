@@ -1,4 +1,4 @@
-package Archlinux::Messages;
+package Archlinux::Term;
 
 use warnings;
 use strict;
@@ -9,7 +9,7 @@ use Exporter;
 
 our @ISA     = qw(Exporter);
 our @EXPORT  = qw(msg status substatus warning error);
-our $VERSION = '0.02';
+our $VERSION = '0.01';
 
 our ($Columns, $Mono) = (78, undef);
 
@@ -89,11 +89,11 @@ __END__
 
 =head1 NAME
 
-Archlinux::Messages - Print messages to the terminal Archlinux style!
+Archlinux::Term - Print messages to the terminal Archlinux style!
 
 =head1 SYNOPSIS
 
-  use Archlinux::Messages;
+  use Archlinux::Term;
 
   status( 'This is a status message' );
   substatus( 'This is a substatus message' );
@@ -136,7 +136,7 @@ its easier when you're writing a quick script!  If you don't want to
 pollute the namespace then just explicitly import nothing into your
 namespace:
 
-  use Archlinux::Messages qw();
+  use Archlinux::Term qw();
 
 Every function takes multiple arguments which are C<join>ed together,
 word-wrapped and printed to the screen.  If a message goes past the
@@ -188,29 +188,29 @@ isn't caught it is displayed on the screen and the program exits.
 
 =head1 TWEAKING
 
-You can change the default settings of I<Archlinux::Messages> by changing
+You can change the default settings of I<Archlinux::Term> by changing
 some package variables:
 
 =head2 Word-wrap columns
 
-C<$Archlinux::Messages::Columns> Determines at which column
+C<$Archlinux::Term::Columns> Determines at which column
 word-wrapping occurs.  However, if it is set to a false or negative
 value, it will turn off word-wrapping all-together.
 
 =head2 Monochrome
 
-If C<$Archlinux::Messages::Mono> is set to a true value then ANSI
+If C<$Archlinux::Term::Mono> is set to a true value then ANSI
 terminal colors are disabled.
 
 =head2 Example
 
-  use Archlinux::Messages;
+  use Archlinux::Term;
 
   sub mysub
   {
       # It's usually a good idea to use local for this stuff...
-      local $Archlinux::Messages::Columns = 144;
-      local $Archlinux::Messages::Mono    = 1;
+      local $Archlinux::Term::Columns = 144;
+      local $Archlinux::Term::Mono    = 1;
 
       status( 'Here is an uncolorful really long status message ... '  .
               'no it's not over with yet!  We wrap at 144 characters ' .
