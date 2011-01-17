@@ -1,122 +1,55 @@
-NAME
-    Archlinux::Term - Display messages on the terminal Archlinux style!
+-*- org -*-
+    _             _     _ _                     _____                   
+   / \   _ __ ___| |__ | (_)_ __  _   ___  ___ |_   _|__ _ __ _ __ ___  
+  / _ \ | '__/ __| '_ \| | | '_ \| | | \ \/ (_|_)| |/ _ \ '__| '_ ` _ \ 
+ / ___ \| | | (__| | | | | | | | | |_| |>  < _ _ | |  __/ |  | | | | | |
+/_/   \_\_|  \___|_| |_|_|_|_| |_|\__,_/_/\_(_|_)|_|\___|_|  |_| |_| |_|
+                                                                        
+Archlinux::Term - Display messages on the terminal Archlinux style!
 
-VERSION
-    0.01
+* Background
+  Archlinux has a distinctive and simple style for displaying messages
+  on the terminal. This style is used in the init scripts and pacman
+  to give a cohesive look to Archlinux's terminal. This module makes
+  it easy to use that style in your perl scripts.
 
-SYNOPSIS
-      use Archlinux::Term;
+* Installation
+  To install this module follow these steps. If you have already
+  downloaded and extracted the distribution tarball in order to read
+  this README file skip to step 4.
+  
+  1) Download the distribution tarball from CPAN.
+  2) Extract the tarball.
+  3) *cd* into the extracted directory (Archlinux-Term-<version>)
+  4) Run *perl Makefile.PL* to create a *Makefile*
+  5) Run *make* to build the module using the *Makefile*
+  6) (Optional) Run *make test* to run automated self-tests.
+  7) Run *make install* to install the perl module into a system directory.
 
-      status( 'This is a status message' );
-      substatus( 'This is a substatus message' );
-      warning( 'This is a warning message' );
-      error( 'This is a fatal error message' ); # Also exits the program
-      msg( 'This is just an indented message' );
+  Or better yet use a CPAN shell to do it for you! Cpanminus is available
+  on CPAN under the name "App-cpanminus".
 
-    Outputs:
+** Example
+   :curl -O http://search.cpan.org/.../Archlinux-Term-0.01.tar.gz
+   :tar xf Archlinux-Term-0.01.tar.gz
+   :cd Archlinux-Term-0.01
+   :perl Makefile.PL
+   :make
+   :make test
+   :sudo make install
 
-      ==> This is a status message
-        -> This is a substatus message
-      ==> WARNING: This is a warning message
-      ==> ERROR: This is a fatal error message
-          This is just an indented message
+* References
+** Archlinux
+   http://www.archlinux.org
+** Git Repository
+   http://github.com/juster/perl-archlinux-messages
 
-DESCRIPTION
-    Archlinux has a distinctive and simple style for displaying messages on
-    the terminal. This style is used in the init scripts and Archlinux
-    programs like pacpan to give a cohesive look to Archlinux's terminal.
-    Now you can easily conform to this simple colorful style and fit right
-    in!
+* Author
+  Justin Davis `<juster at cpan dot org>'
 
-FUNCTIONS
-    All functions are exported by default. This is a little sloppy, but its
-    easier when you're writing a quick script! If you don't want to pollute
-    the namespace then just explicitly import nothing into your namespace:
+* Copyright and License
+  Copyright 2010 Justin Davis, all rights reserved.
 
-      use Archlinux::Term qw();
-
-    Every function takes multiple arguments which are `join'ed together,
-    word-wrapped and printed to the screen. If a message goes past the
-    screen limit it is wordwrapped and indented past the prefix.
-
-  msg( text1 [ , text2, ... ] )
-    Prints a simple message. There is no coloring it is merely wordwrapped
-    and indented by four spaces.
-
-  status( text1 [ , text2, ... ] )
-    Prints a status message. These are basically like major headings in a
-    document. The message is prefixed with a green arrow:
-
-  substatus( text1 [ , text2, ... ] )
-    Prints a sub-status message. These are like minor headings in a
-    document. The message is prefixed with a little blue arrow.
-
-  warning( text1 [ , text2, ... ] )
-    Prints a warning message. These are non-fatal warning messages; the
-    program will keep running. Warnings are printed to STDERR by using
-    `warn'. The message is prefixed with a yellow arrow and capital WARNING.
-
-  error( text1 [ , text2, ... ] )
-    Prints a fatal error message AND DIES, EXITING. There is no line number
-    appended to the `die' message. `$@' or `$EVAL_ERROR' is the colorized
-    output. Errors are printed to STDERR by using `die'. The message is
-    prefixed with a red arrow and capital ERROR.
-
-    The error can be caught with an enclosing `eval' block. If the error
-    isn't caught it is displayed on the screen and the program exits.
-
-    Example
-      eval {
-          if ( $stuff eq 'bad' ) {
-              error( q{Stuff went bad!} )
-          }
-      };
-
-      if ( $@ =~ /Stuff went bad!/ ) {
-          warning( q{Stuff went bad, but it's okay now!} );
-      }
-
-TWEAKING
-    You can change the default settings of Archlinux::Term by changing
-    some package variables:
-
-  Word-wrap columns
-    `$Archlinux::Term::Columns' Determines at which column word-wrapping
-    occurs. However, if it is set to a false or negative value, it will turn
-    off word-wrapping all-together.
-
-  Monochrome
-    If `$Archlinux::Term::Mono' is set to a true value then ANSI
-    terminal colors are disabled.
-
-  Example
-      use Archlinux::Term;
-
-      sub mysub
-      {
-          # It's usually a good idea to use local for this stuff...
-          local $Archlinux::Term::Columns = 144;
-          local $Archlinux::Term::Mono    = 1;
-
-          status( 'Here is an uncolorful really long status message ... '  .
-                  'no it's not over with yet!  We wrap at 144 characters ' .
-                  'so I have to keep typing.' );
- 
-      }
-
-SEE ALSO
-    * Archlinux
-        http://www.archlinux.org
-
-    * Git Repository
-        http://github.com/juster/perl-archlinux-messages
-
-AUTHOR
-    Justin Davis `<juster at cpan dot org>'
-
-LICENSE
-    Copyright 2010 Justin Davis, all rights reserved.
-
-    This program is free software; you can redistribute it and/or modify it
-    under the same terms as Perl itself.
+  This program is free software; you can redistribute it and/or modify it
+  under the same terms as Perl itself.
 
