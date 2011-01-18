@@ -226,7 +226,7 @@ L<http://www.archlinux.org>
 
 =item * Git Repository
 
-L<http://github.com/juster/perl-archlinux-messages>
+L<http://github.com/juster/perl-archlinux-term>
 
 =back
 
@@ -236,7 +236,7 @@ Justin Davis C<< <juster at cpan dot org> >>
 
 =head1 LICENSE
 
-Copyright 2010 Justin Davis, all rights reserved.
+Copyright 2011 Justin Davis, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
