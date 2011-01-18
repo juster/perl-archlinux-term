@@ -89,7 +89,7 @@ __END__
 
 =head1 NAME
 
-Archlinux::Term - Print messages to the terminal Archlinux style!
+Archlinux::Term - Print messages to the terminal Archlinux style
 
 =head1 SYNOPSIS
 
@@ -123,11 +123,10 @@ Outputs:
 
 =head1 DESCRIPTION
 
-Archlinux has a distinctive and simple style for displaying information
-on the terminal.  This style is used in the init scripts and Archlinux
-programs like pacman to give a cohesive look to Archlinux's terminal.
-Now you can easily conform to this simple colorful style and fit right
-in!
+Archlinux has a distinctive and simple style for displaying messages
+on the terminal. This style is used in the init scripts and pacman
+to give a cohesive look to Archlinux's terminal. This module makes
+it easy to use that style in your perl scripts.
 
 =head1 FUNCTIONS
 
