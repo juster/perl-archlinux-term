@@ -8,7 +8,8 @@ use Text::Wrap      qw(wrap);
 use Exporter;
 
 our @ISA         = qw(Exporter);
-our %EXPORT_TAGS = ( 'all' => [ qw(msg status substatus warning error) ] );
+our @EXPORT_OK   = qw(msg status substatus warning error);
+our %EXPORT_TAGS = ( 'all' => [ @EXPORT_OK ] );
 our $VERSION     = '0.01';
 
 our ($Columns, $Mono) = (78, undef);

@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Test::More tests => 4;
 
-use Archlinux::Term;
+use Archlinux::Term qw(:all);
 
 my $TEN = q{1234567890};
 

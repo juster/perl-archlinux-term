@@ -5,7 +5,7 @@ use strict;
 
 use English    qw(-no_match_vars);
 use Test::More tests => 5;
-use Archlinux::Term;
+use Archlinux::Term qw(:all);
 
 my %CODE_OF = ( 'red' => 31, 'green' => 32, 'yellow' => 33, 'blue' => 34, );
 
