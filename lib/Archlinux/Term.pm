@@ -10,7 +10,7 @@ use Exporter;
 our @ISA         = qw(Exporter);
 our @EXPORT_OK   = qw(msg status substatus warning error);
 our %EXPORT_TAGS = ( 'all' => [ @EXPORT_OK ] );
-our $VERSION     = '0.01';
+our $VERSION     = '0.03';
 
 our ($Columns, $Mono) = (78, undef);
 
