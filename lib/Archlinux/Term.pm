@@ -90,7 +90,7 @@ __END__
 
 =head1 NAME
 
-Archlinux::Term - Print messages to the terminal Archlinux style
+Archlinux::Term - Print messages to the terminal in Archlinux style
 
 =head1 SYNOPSIS
 

@@ -5,7 +5,7 @@
  / ___ \| | | (__| | | | | | | | | |_| |>  < _ _ | |  __/ |  | | | | | |
 /_/   \_\_|  \___|_| |_|_|_|_| |_|\__,_/_/\_(_|_)|_|\___|_|  |_| |_| |_|
                                                                         
-Archlinux::Term - Print messages to the terminal Archlinux style
+Archlinux::Term - Print messages to the terminal in Archlinux style
 
 * Background
   Archlinux has a distinctive and simple style for displaying messages
