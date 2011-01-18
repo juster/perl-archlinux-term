@@ -7,9 +7,9 @@ use Term::ANSIColor qw(color);
 use Text::Wrap      qw(wrap);
 use Exporter;
 
-our @ISA     = qw(Exporter);
-our @EXPORT  = qw(msg status substatus warning error);
-our $VERSION = '0.01';
+our @ISA         = qw(Exporter);
+our %EXPORT_TAGS = ( 'all' => [ qw(msg status substatus warning error) ] );
+our $VERSION     = '0.01';
 
 our ($Columns, $Mono) = (78, undef);
 
@@ -128,18 +128,17 @@ on the terminal. This style is used in the init scripts and pacman
 to give a cohesive look to Archlinux's terminal. This module makes
 it easy to use that style in your perl scripts.
 
-=head1 FUNCTIONS
+=head1 EXPORTED FUNCTIONS
 
-All functions are exported by default.  This is a little sloppy, but
-its easier when you're writing a quick script!  If you don't want to
-pollute the namespace then just explicitly import nothing into your
-namespace:
+No functions are exported by default. This is different from the
+first incarnation of this module. In order to import all functions
+from this module you can use the C<:all> export tag like so:
 
-  use Archlinux::Term qw();
+  use Archlinux::Term qw(:all);
 
-Every function takes multiple arguments which are C<join>ed together,
-word-wrapped and printed to the screen.  If a message goes past the
-screen limit it is wordwrapped and indented past the prefix.
+Every function takes a list of multiple arguments which are C<join>ed
+together, word-wrapped and printed to the screen.  If a message goes
+past the screen limit it is wordwrapped and indented past the prefix.
 
 =head2 msg( text1 [ , text2, ... ] )
 
