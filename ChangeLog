@@ -1,5 +1,5 @@
-2011-01-16  Justin Davis  <juster@cpan.org>
+2011-01-18  Justin Davis  <juster@cpan.org>
 
-	* RELEASE (0.01) - I renamed this module from Archlinux::Messages
-	to Archlinux::Term and started the version back to 0.01.
+	* RELEASE (0.01): This module is renamed from Archlinux::Messages
+	to Archlinux::Term.
 
